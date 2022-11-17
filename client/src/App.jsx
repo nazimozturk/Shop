@@ -7,6 +7,7 @@ import ProductList from "./Pages/ProductList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
+  // const user = true;
   return (
     <Router>
       <Routes>

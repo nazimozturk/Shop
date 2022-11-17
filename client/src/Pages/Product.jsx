@@ -5,6 +5,10 @@ import Newsletter from "../Components/Newsletter";
 import Footer from "../Components/Footer";
 import { Add, Remove } from "@mui/icons-material";
 import { mobile } from "../responsive";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { publicRequest } from "../reqeustMethods";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -109,16 +113,31 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/product/find/" + id);
+        setProduct(res.data);
+        console.log(res.data);
+      } catch (err) {}
+    };
+    getProduct();
+  });
+
   return (
     <Container>
       <Navbar />
       <Announcement />
       <Wrapper>
         <ImageContainer>
-          <Image src="https://ae01.alicdn.com/kf/HTB1SXHQJFXXXXc0XpXXq6xXFXXXd/Explosion-models-street-style-women-square-heels-high-quality-nubuck-shoes-ankle-boots-autumn-rhinestone-sexy.jpg" />
+          <Image src={product.img} />
         </ImageContainer>
         <InfoContainer>
-          <Title>Denim Jumsuit</Title>
+          <Title>{product.title}</Title>
           <Desc>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam
             nihil, ducimus atque recusandae nobis est culpa vitae nisi quia
