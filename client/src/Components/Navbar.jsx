@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import MailIcon from "@mui/icons-material/Email";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -78,7 +79,9 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>
+            <Link to={`/`}>LAMA.</Link>
+          </Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
