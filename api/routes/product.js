@@ -24,11 +24,11 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      {
+      req.params.id, {
         $set: req.body,
-      },
-      { new: true }
+      }, {
+        new: true
+      }
     );
     res.status(200).json(updatedProduct);
   } catch (err) {
@@ -64,7 +64,9 @@ router.get("/", async (req, res) => {
     let products;
 
     if (qNew) {
-      products = await Product.find().sort({ createdAt: -1 }).limit(1);
+      products = await Product.find().sort({
+        createdAt: -1
+      }).limit(1);
     } else if (qCategory) {
       products = await Product.find({
         categories: {
