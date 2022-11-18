@@ -11,9 +11,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/Product/:id" element={<Product />} />
-        <Route path="/Product/:category" element={<ProductList />} />
+        <Route path="/Products/:category" element={<ProductList />} />
         <Route path="/ProductList" element={<ProductList />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Login" element={<Login />} />
