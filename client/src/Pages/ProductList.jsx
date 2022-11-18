@@ -83,7 +83,7 @@ const ProductList = () => {
           <Select onChange={(e) => setShort(e.target.value)}>
             <Option value="newest">Newest</Option>
             <Option value="asc">Price (ASC)</Option>
-            <Option value="desc">Black (DESC)</Option>
+            <Option value="desc">Price (DESC)</Option>
           </Select>
         </Filter>
       </FilterContainer>
