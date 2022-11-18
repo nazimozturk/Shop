@@ -120,7 +120,7 @@ const Product = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await publicRequest.get("/product/find/" + id);
+        const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
         console.log(res.data);
       } catch (err) {}
@@ -138,13 +138,8 @@ const Product = () => {
         </ImageContainer>
         <InfoContainer>
           <Title>{product.title}</Title>
-          <Desc>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam
-            nihil, ducimus atque recusandae nobis est culpa vitae nisi quia
-            voluptatum rem, enim neque vel labore earum saepe impedit ipsam
-            cupiditate!
-          </Desc>
-          <Price>20$</Price>
+          <Desc>{product.desc}</Desc>
+          <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -155,12 +150,11 @@ const Product = () => {
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                <FilterSizeOptions>XS</FilterSizeOptions>
-                <FilterSizeOptions>S</FilterSizeOptions>
-                <FilterSizeOptions>M</FilterSizeOptions>
-                <FilterSizeOptions>L</FilterSizeOptions>
-                <FilterSizeOptions>XL</FilterSizeOptions>
-                <FilterSizeOptions>XXL</FilterSizeOptions>
+                <FilterSizeOptions>xs</FilterSizeOptions>
+                <FilterSizeOptions>s</FilterSizeOptions>
+                <FilterSizeOptions>m</FilterSizeOptions>
+                <FilterSizeOptions>l</FilterSizeOptions>
+                <FilterSizeOptions>xl</FilterSizeOptions>
               </FilterSize>
             </Filter>
           </FilterContainer>
