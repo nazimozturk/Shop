@@ -142,15 +142,13 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} key={c} />
+                <FilterColor color={c} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                {product.size?.map((s) => (
-                  <FilterSizeOptions key={s}>{s}</FilterSizeOptions>
-                ))}
+                <FilterSizeOptions>xş</FilterSizeOptions>
               </FilterSize>
             </Filter>
           </FilterContainer>
