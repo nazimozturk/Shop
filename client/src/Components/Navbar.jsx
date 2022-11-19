@@ -5,6 +5,7 @@ import { Badge } from "@mui/material";
 import MailIcon from "@mui/icons-material/Email";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   height: 60px;
@@ -68,6 +69,7 @@ const Input = styled.input`
 `;
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
   return (
     <Container>
       <Wrapper>
@@ -87,7 +89,7 @@ const Navbar = () => {
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SING IN</MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={quantity} color="primary">
               <MailIcon color="action" />
             </Badge>
           </MenuItem>
