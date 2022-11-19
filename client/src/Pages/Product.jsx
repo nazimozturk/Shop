@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Navbar from "../Components/Navbar";
 import Announcement from "../Components/Announcement";
@@ -6,8 +7,7 @@ import Footer from "../Components/Footer";
 import { Add, Remove } from "@mui/icons-material";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { publicRequest } from "../reqeustMethods";
 
 const Container = styled.div``;
@@ -83,13 +83,13 @@ const AddContainer = styled.div`
   ${mobile({ width: "100%" })}
 `;
 
-const AmmountContainer = styled.div`
+const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
 `;
 
-const Ammount = styled.span`
+const Amount = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 10px;
@@ -122,12 +122,10 @@ const Product = () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
-        console.log(res.data);
-      } catch (err) {}
+      } catch {}
     };
     getProduct();
-  });
-
+  }, [id]);
   return (
     <Container>
       <Navbar />
@@ -143,27 +141,23 @@ const Product = () => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {product.color?.map((c) => (
+                <FilterColor color={c} key={c} />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                <FilterSizeOptions>xs</FilterSizeOptions>
-                <FilterSizeOptions>s</FilterSizeOptions>
-                <FilterSizeOptions>m</FilterSizeOptions>
-                <FilterSizeOptions>l</FilterSizeOptions>
                 <FilterSizeOptions>xl</FilterSizeOptions>
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
-            <AmmountContainer>
+            <AmountContainer>
               <Remove />
-              <Ammount>1</Ammount>
+              <Amount>1</Amount>
               <Add />
-            </AmmountContainer>
+            </AmountContainer>
             <Button>ADD TO CARD</Button>
           </AddContainer>
         </InfoContainer>
