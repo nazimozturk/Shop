@@ -13,7 +13,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  ${mobile({ height: "30vh" })}
+  ${mobile({ height: "20vh" })}
 `;
 
 const Info = styled.div`
@@ -26,11 +26,11 @@ const Info = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(235, 199, 232, 0.7);
 `;
 
 const Title = styled.h1`
-  color: black;
+  color: white;
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
@@ -49,7 +49,7 @@ const CategoryItem = ({ item }) => {
         <Image src={item.img} />
         <Info>
           <Title>{item.title}</Title>
-          <Button>Shop Now</Button>
+          <Button>SHOP NOW</Button>
         </Info>
       </Link>
     </Container>
