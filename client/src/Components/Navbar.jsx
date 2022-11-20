@@ -88,11 +88,13 @@ const Navbar = () => {
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SING IN</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
-              <MailIcon color="action" />
-            </Badge>
-          </MenuItem>
+          <Link to="/cart">
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <MailIcon color="action" />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
