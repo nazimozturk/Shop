@@ -6,9 +6,9 @@ import { Add, Remove } from "@mui/icons-material";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import { useEffect, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { userRequest } from "../reqeustMethods";
-import { unstable_HistoryRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -162,7 +162,7 @@ const Button = styled.button`
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
-  const history = unstable_HistoryRouter();
+  const history = useNavigate();
 
   const onToken = (token) => {
     setStripeToken(token);
